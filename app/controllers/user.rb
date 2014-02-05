@@ -1,3 +1,5 @@
+enable :sessions
+
 get '/login' do
   #show login/signup view
   erb :login
@@ -7,8 +9,12 @@ post '/login' do
   # verify login and password
   # redirect to / if successful
   # display error if unsuccessful
-
-  redirect '/'
+  if User.authenticate(params[:email],params[:password])
+    session[:user_id] = User.find_by(email: params[:email]).id
+    redirect '/'
+  else
+    redirect '/login'
+  end
 end
 
 post '/signup' do
