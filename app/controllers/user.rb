@@ -9,8 +9,8 @@ post '/login' do
   # verify login and password
   # redirect to / if successful
   # display error if unsuccessful
-  if User.authenticate(params[:email],params[:password])
-    session[:user_id] = User.find_by(email: params[:email]).id
+  if User.authenticate(params[:username], params[:password])
+    session[:user_id] = User.find_by(username: params[:username]).id
     redirect '/'
   else
     redirect '/login'
