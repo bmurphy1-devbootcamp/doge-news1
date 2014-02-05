@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="content">
+    <h1><a href="<%= @submission.url %>"><%= @submission.title %></a></h1>
+    <p>Submitted by: <a href="/users/<%= @submission.user.id %>"><%= @submission.user.username %></a></p>
+    <p><%= @submission.text %></p>
+    <!-- display comment box -->
+    <form action="/comment" method="post">
+      <textarea rows="5" cols="30" placeholder="Your comments here"></textarea><br>
+      <input type="submit" value="Post comment">
+    </form>
+    <!-- display other user's comments -->
+    <% @submission.comments.each do |comment| %>
+    <p><a href="/users/<%=comment.user.id %>"><%= comment.user.username %></a> - <%= comment.text %></p>
+    <% end %>
+  </div>
+</div>

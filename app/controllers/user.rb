@@ -1,11 +1,13 @@
 get '/login' do
   #show login/signup view
+  erb :login
 end
 
 post '/login' do
   # verify login and password
   # redirect to / if successful
   # display error if unsuccessful
+
   redirect '/'
 end
 
@@ -17,7 +19,8 @@ post '/signup' do
 end
 
 get '/users/:id' do
-  # show username and links based on session[:user_id]
+  # show username and links to submissions/comments
+    # based on session[:user_id]
 end
 
 get '/users/:id/submissions' do
