@@ -18,6 +18,12 @@ post '/login' do
 end
 
 post '/signup' do
+  user = User.create(username: params[:username], email: params[:email], password: params[:password])
+  if user.errors.any?
+    redirect "/login?error=#{user.errors}"
+  else
+    redirect "/login?success=1"
+  end
   # take user supplied info
   # create user based on info given
   # redirect to login if creation successful
