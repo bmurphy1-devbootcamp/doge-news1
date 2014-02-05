@@ -6,11 +6,17 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :email, presence: true
   before_create :encrypt
+  has_many :submissions
+  has_many :comments
 
  def self.authenticate(username,password)
     user = User.find_by(username: username)
-    if Password.new(user.password) == password
-      return user
+    if user
+      if Password.new(user.password) == password
+        return user
+      else
+        return nil
+      end
     else
       return nil
     end

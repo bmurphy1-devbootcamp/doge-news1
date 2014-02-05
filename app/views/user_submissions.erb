@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>User Submissions</h2>
+  Username: <%= @user.username %>
+  <ul><% @user.submissions.each do |submission| %>
+    <li><a href="/submissions/<%=submission.id%>"><%=submission.title%></a></li>
+      <% end %>
+    </ul>
+
+
+</div>
