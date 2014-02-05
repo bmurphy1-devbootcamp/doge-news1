@@ -2,8 +2,17 @@
   <div class="content">
     <h1><a href="<%= @submission.url %>"><%= @submission.title %></a></h1>
     <p>Submitted by: <a href="/users/<%= @submission.user.id %>"><%= @submission.user.username %></a></p>
+    <p>Votes: <span id="vote-count"><%= @submission.submission_votes.count%></span></p>
     <p><%= @submission.text %></p>
     <!-- display comment box -->
+    <form id="upvote">
+      <input type="hidden" id="up-id" value="<%=@submission.id%>">
+      <input type="button" value="upvote">
+    </form>
+    <form class="inactive" id="downvote">
+      <input type="hidden" value="<%=@submission.id%>">
+      <input type="button" value="downvote">
+    </form>
     <form action="/comment" method="post">
       <textarea rows="5" cols="30" placeholder="Your comments here"></textarea><br>
       <input type="submit" value="Post comment">

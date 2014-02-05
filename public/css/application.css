@@ -12,3 +12,6 @@ th {
   text-align: left;
 }
 
+.inactive {
+  display: none;
+}

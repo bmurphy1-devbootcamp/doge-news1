@@ -1,3 +1,4 @@
+require 'pry'
 get '/submissions/:id' do
   @submission = Submission.find(params[:id])
   # show submission info from url ID
@@ -21,4 +22,12 @@ post '/submit' do
   # fix user_id part
   s = Submission.create(title: params[:title], url: params[:url], text: params[:textarea], user_id: 1)
   redirect("/submissions/#{s.id}")
+end
+
+post '/upvote' do
+
+  user = User.find(session[:user_id])
+  s = Submission.find(params[:id]) # how to get this id?
+  s.submission_votes << SubmissionVote.create(user_id: user.id)
+  return_hash = {:votes => s.submission_votes.count.to_s}.to_json
 end
