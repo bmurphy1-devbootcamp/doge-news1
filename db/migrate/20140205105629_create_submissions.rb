@@ -5,6 +5,7 @@ class CreateSubmissions < ActiveRecord::Migration
       t.string :url
       t.string :text #?
       t.integer :user_id
+      t.timestamps
     end
   end
 end

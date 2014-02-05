@@ -15,3 +15,15 @@ post '/signup' do
   # redirect to login if creation successful
   # reload page showing error if unsuccessful
 end
+
+get '/users/:id' do
+  # show username and links based on session[:user_id]
+end
+
+get '/users/:id/submissions' do
+  #show all submissions for user with id == :id
+end
+
+get '/users/:id/comments' do
+  #show all comments for user with id == :id
+end
